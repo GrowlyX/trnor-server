@@ -1,0 +1,40 @@
+plugins {
+    id "application"
+    id "org.jetbrains.kotlin.jvm" version "1.6.21"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group "org.example.trnor"
+version "1.0"
+
+application {
+    mainClassName "org.example.trnor.TrnorApp"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "io.javalin:javalin:4.6.0"
+
+    implementation "org.slf4j:slf4j-simple:1.8.0-beta4"
+    implementation "org.slf4j:slf4j-api:1.8.0-beta4"
+
+    implementation 'com.google.code.gson:gson:2.9.0'
+}
+
+compileKotlin {
+    kotlinOptions.javaParameters = true
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+shadowJar {
+    archiveClassifier.set("")
+
+    exclude "**/*.kotlin_metadata"
+    exclude "**/*.kotlin_builtins"
+
+    archiveFileName = "trnor-server.jar"
+}

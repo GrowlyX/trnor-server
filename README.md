@@ -16,5 +16,6 @@ By typing `s/e/r`, you're able to change any `tenor.com` URL, to my `trnor.com` 
 ## Additional Information:
  - trnor-server is built with [Kotlin](https://kotlinlang.org) using the [Javalin](https://javalin.io/) platform.
  - We use a basic mapping of [Tenor's GifAPI](https://tenor.com/gifapi/documentation#quickstart).
+   - Interested in a full implementation of it? I will be open-sourcing one soon!
  - By default, we return a templated meme with the provided gif overlayed on it.
    - The template can be seen here: [ok-i-pull-up.png](https://github.com/GrowlyX/trnor-server/blob/master/ok-i-pull-up.png)

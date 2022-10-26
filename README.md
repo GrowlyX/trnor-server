@@ -1,13 +1,10 @@
 # trnor-server
-Making good use of [Discord](https://discord.com)'s chat replacement functionality.
-
-## What is it?
-This is used to wildcard-target endpoints of `trnor.com` (a domain I own), and return a modified version of the [tenor](https://tenor.com) GIF based on the  id provided at the end of the endpoint.
+Making good use of [Discord](https://discord.com)'s chat replacement hack.
 
 ## How does it work?
 When a message with the following syntax:
 - `s/<x>/<y>`
-  - More information on this functionality can be seen [here](https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/).
+  - More information on this can be seen [here](https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/).
 
 is sent in any text-based Discord channel, your last sent message is edited, replacing the first occurrence of `x`, with `y`.
 

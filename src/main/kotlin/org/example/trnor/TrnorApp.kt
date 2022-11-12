@@ -45,7 +45,7 @@ object TrnorApp
         val height = fgImage.getHeight(null)
 
         app.get("/*") {
-            val path = it.req.pathInfo
+            val path = it.req().pathInfo
 
             if (path.contains(".ico"))
             {
@@ -72,8 +72,7 @@ object TrnorApp
                     .fromJson(
                         json, TenorSearchResponse::class.java
                     )
-            }
-                ?: return@get
+            } ?: return@get
 
             if (deserialized.results.isEmpty())
             {
@@ -88,12 +87,8 @@ object TrnorApp
                 return@get
             }
 
-            val media = result
-                .media.first()
-
-            val gif = URL(
-                media.gif.url
-            )
+            val media = result.media.first()
+            val gif = URL(media.gif.url)
 
             // Create a non-transparent BG image
             val bgImage = ImageIO.read(gif)
@@ -103,18 +98,11 @@ object TrnorApp
                 width, height, BufferedImage.TYPE_INT_RGB
             )
 
-            val scaled = this
-                .resize(bgImage)
+            val scaled = this.resize(bgImage)
+            val graphics = finalImage.createGraphics()
 
-            val graphics = finalImage
-                .createGraphics()
-
-            graphics.drawImage(
-                scaled, 0, 78, null
-            )
-            graphics.drawImage(
-                fgImage, 0, 0, null
-            )
+            graphics.drawImage(scaled, 0, 78, null)
+            graphics.drawImage(fgImage, 0, 0, null)
             graphics.dispose()
 
             val output = ByteArrayOutputStream()
@@ -125,7 +113,7 @@ object TrnorApp
                     output.toByteArray()
                 )
 
-            it.res.contentType = "image/png"
+            it.res().contentType = "image/png"
             it.result(inputStream)
         }
     }
@@ -144,8 +132,8 @@ object TrnorApp
                 400, 300, BufferedImage.TYPE_INT_ARGB
             )
 
-        val graphics = bufferedImage
-            .createGraphics()
+        val graphics =
+            bufferedImage.createGraphics()
 
         graphics.drawImage(tmp, 0, 0, null)
         graphics.dispose()

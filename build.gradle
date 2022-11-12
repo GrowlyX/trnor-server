@@ -4,11 +4,11 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
-group "org.example.trnor"
-version "1.0"
+group "com.trnor.server"
+version "1.0.01"
 
 application {
-    mainClassName "org.example.trnor.TrnorApp"
+    mainClassName "com.trnor.server.TrnorServerApp"
 }
 
 repositories {

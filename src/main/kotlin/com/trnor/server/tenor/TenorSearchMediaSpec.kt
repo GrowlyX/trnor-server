@@ -1,4 +1,4 @@
-package org.example.trnor.tenor
+package com.trnor.server.tenor
 
 import java.util.StringJoiner
 

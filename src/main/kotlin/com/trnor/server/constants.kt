@@ -1,4 +1,4 @@
-package org.example.trnor
+package com.trnor.server
 
 /**
  * @author GrowlyX

@@ -1,11 +1,10 @@
-package org.example.trnor
+package com.trnor.server
 
 import com.google.gson.GsonBuilder
 import com.google.gson.LongSerializationPolicy
 import io.javalin.Javalin
-import io.javalin.http.ContentType
-import org.example.trnor.tenor.TenorSearchIdExtractor
-import org.example.trnor.tenor.TenorSearchResponse
+import com.trnor.server.tenor.TenorSearchIdExtractor
+import com.trnor.server.tenor.TenorSearchResponse
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.io.ByteArrayInputStream
@@ -19,7 +18,7 @@ import javax.imageio.ImageIO
  * @author GrowlyX
  * @since 5/11/2022
  */
-object TrnorApp
+object TrnorServerApp
 {
     @JvmStatic
     fun main(args: Array<String>)
@@ -98,7 +97,7 @@ object TrnorApp
                 width, height, BufferedImage.TYPE_INT_RGB
             )
 
-            val scaled = this.resize(bgImage)
+            val scaled = resize(bgImage)
             val graphics = finalImage.createGraphics()
 
             graphics.drawImage(scaled, 0, 78, null)
